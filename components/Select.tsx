@@ -24,7 +24,7 @@ const SelectField: React.VFC<TextFieldProps> = ({
       <Label id={name} label={label}>
         <Field
           as="select"
-          className={`bg-gray-200 rounded-sm p-2 form-border form-border-focus outline-none ${
+          className={`bg-gray-200 rounded-sm p-2 form-border form-focus outline-none ${
             isInvalid ? "form-error" : "mb-3 "
           }`}
           id={name}

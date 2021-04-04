@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <PageLayout>
       <Head>
-        <title>Prisma | Dashboard</title>
+        <title>Prisma | Dashboard - Sam Ojling</title>
         <link rel="icon" href="/prisma-favicon.ico" />
       </Head>
 

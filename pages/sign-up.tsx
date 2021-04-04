@@ -35,7 +35,7 @@ const Signup: React.VFC = () => {
   return (
     <PageLayout>
       <Head>
-        <title>Prisma | Sign up</title>
+        <title>Prisma | Sign up - Sam Ojling</title>
         <link rel="icon" href="/prisma-favicon.ico" />
       </Head>
       <Form

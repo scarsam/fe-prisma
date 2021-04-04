@@ -24,7 +24,14 @@ const Login: React.VFC = () => {
   const onSubmit = async (values: FormikValues) => {
     try {
       const result = await api("/login", "POST", values);
-      updateUser({ id: "1", name: "Monkey", team: "Admins", ...values });
+      updateUser({
+        id: "1",
+        name: "Monkey",
+        team: "Admins",
+        email: result?.email,
+        password: result?.password,
+        ...values,
+      });
       setError(null);
       router.push("/");
     } catch (err) {
@@ -35,7 +42,7 @@ const Login: React.VFC = () => {
   return (
     <PageLayout>
       <Head>
-        <title>Prisma | Login</title>
+        <title>Prisma | Login - Sam Ojling</title>
         <link rel="icon" href="/prisma-favicon.ico" />
       </Head>
 
