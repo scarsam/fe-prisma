@@ -16,8 +16,6 @@ enum Teams {
 
 type UserContextState = {
   user: UserType;
-  isLoggedIn: boolean;
-  updateUserState: (userState: boolean) => void;
   updateUser: (user: Partial<UserType>) => void;
 };
 
@@ -29,8 +27,6 @@ const contextDefaultValues: UserContextState = {
     password: "",
     team: "",
   },
-  isLoggedIn: false,
-  updateUserState: () => {},
   updateUser: () => {},
 };
 
@@ -47,15 +43,10 @@ const UserProvider: React.FC = ({ children }) => {
       user: { ...prevState.user, ...updatedUser },
     }));
 
-  const updateUserState = (userState: boolean) =>
-    updateStore((prevState) => ({ ...prevState, isLoggedIn: userState }));
-
   return (
     <UserContext.Provider
       value={{
         user: store.user,
-        isLoggedIn: store.isLoggedIn,
-        updateUserState,
         updateUser,
       }}
     >
@@ -65,11 +56,9 @@ const UserProvider: React.FC = ({ children }) => {
 };
 
 export const useUserStore = () => {
-  const { user, isLoggedIn, updateUserState, updateUser } = useContext(
-    UserContext,
-  );
+  const { user, updateUser } = useContext(UserContext);
 
-  return { user, isLoggedIn, updateUserState, updateUser };
+  return { user, updateUser };
 };
 
 export default UserProvider;

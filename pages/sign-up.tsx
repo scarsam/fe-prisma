@@ -17,21 +17,18 @@ const initalValues = {
 
 const Signup: React.VFC = () => {
   const [error, setError] = useState<string | null>(null);
-  const { updateUser, updateUserState } = useUserStore();
+  const { updateUser } = useUserStore();
   const router = useRouter();
 
   const onSubmit = async (values: FormikValues) => {
     try {
       const result = await api("/sign-up", "POST", values);
-      updateUserState(true);
       updateUser({ id: "1", name: "Otter", team: "Viewers", ...result });
       setError(null);
       router.push("/");
     } catch (err) {
       setError(err?.message);
     }
-    updateUserState(true);
-    updateUser({ ...values });
   };
 
   return (

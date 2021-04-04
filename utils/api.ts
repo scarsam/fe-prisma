@@ -17,6 +17,8 @@ async function api(
     if (!response?.ok) {
       throw new Error(json?.message);
     }
+
+    return json;
   } catch (err) {
     const error = err.message
       ? err

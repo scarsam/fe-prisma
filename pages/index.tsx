@@ -20,9 +20,7 @@ export default function Home() {
   ) => {
     try {
       const result = await api(`/update/${user?.id || 1}`, "PUT", values);
-      console.log(result);
       updateUser({ ...result });
-      // updateUser({ name: "Monkey", team: "Admins", ...result });
       setError(null);
     } catch (err) {
       setError(err?.message);

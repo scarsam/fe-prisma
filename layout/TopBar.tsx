@@ -2,12 +2,12 @@ import Link from "../components/Link";
 import { useUserStore } from "../store/user";
 
 const TopBar: React.VFC = () => {
-  const { isLoggedIn, user } = useUserStore();
+  const { user } = useUserStore();
 
   return (
     <header className="flex py-0 px-2 justify-between">
       <h1 className="p-2">Prisma</h1>
-      {isLoggedIn ? (
+      {user?.name ? (
         <p>
           Hello <strong>{user?.name}</strong>
         </p>

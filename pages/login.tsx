@@ -17,13 +17,12 @@ const initalValues = {
 
 const Login: React.VFC = () => {
   const [error, setError] = useState<string | null>(null);
-  const { updateUser, updateUserState } = useUserStore();
+  const { updateUser } = useUserStore();
   const router = useRouter();
 
   const onSubmit = async (values: FormikValues) => {
     try {
       const result = await api("/login", "POST", values);
-      updateUserState(true);
       updateUser({ id: "1", name: "Monkey", team: "Admins", ...values });
       setError(null);
       router.push("/");

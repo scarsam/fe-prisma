@@ -18,7 +18,6 @@ export default async function updateAPI(
     const json = await response.json();
 
     if (!response?.ok) {
-      console.log(json.message);
       return res.status(response?.status).json({
         message: json?.message,
       });
