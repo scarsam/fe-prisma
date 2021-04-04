@@ -1,6 +1,6 @@
 import TopBar from "../layout/TopBar";
-import Layout from "../layout/Layout";
 import Container from "../layout/Container";
+import Layout from "../layout/Layout";
 import UserProvider from "../store/user";
 
 import "../styles/globals.css";
@@ -8,14 +8,14 @@ import "../styles/globals.css";
 function MyApp({ Component, pageProps }) {
   return (
     <UserProvider>
-      <Container>
-        <Layout background>
+      <Layout>
+        <Container background>
           <TopBar />
-        </Layout>
-        <Layout>
+        </Container>
+        <Container>
           <Component {...pageProps} />
-        </Layout>
-      </Container>
+        </Container>
+      </Layout>
     </UserProvider>
   );
 }

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
 .form-border {
   box-shadow: inset 0 -100px 0 -99px #919197;
 }
@@ -10,4 +12,9 @@
 }
 .form-error {
   box-shadow: inset 0 -100px 0 -99px #d5351f;
+}
+
+body,
+html {
+  font-family: "Inter", sans-serif;
 }

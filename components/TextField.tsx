@@ -1,5 +1,6 @@
 import { Field } from "formik";
 import ErrorMessage from "./ErrorMessage";
+import Label from "./Label";
 
 interface TextFieldProps {
   label: string;
@@ -20,10 +21,7 @@ const TextField: React.VFC<TextFieldProps> = ({
 }) => {
   return (
     <div className="mb-1">
-      <label className="relative flex flex-col" htmlFor={name}>
-        <strong className="h-10 right-full py-2 px-1 mr-2 absolute text-right w-max">
-          {label}
-        </strong>
+      <Label id={name} label={label}>
         <Field
           className={`bg-gray-200 p-2 rounded-sm form-border form-focus outline-none ${
             isInvalid ? "form-error bg-red-100" : "mb-3"
@@ -34,7 +32,7 @@ const TextField: React.VFC<TextFieldProps> = ({
           placeholder={placeholder}
         />
         {isInvalid && <ErrorMessage message={errorMessage} />}
-      </label>
+      </Label>
     </div>
   );
 };

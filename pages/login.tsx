@@ -9,6 +9,7 @@ import Form from "../components/Form";
 import Head from "next/head";
 import ServerError from "../components/ServerError";
 import TextField from "../components/TextField";
+import PageLayout from "../layout/PageLayout";
 
 const initalValues = {
   email: "",
@@ -32,10 +33,10 @@ const Login: React.VFC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <PageLayout>
       <Head>
         <title>Prisma | Login</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/prisma-favicon.ico" />
       </Head>
 
       <Form
@@ -66,7 +67,7 @@ const Login: React.VFC = () => {
           </>
         )}
       />
-    </div>
+    </PageLayout>
   );
 };
 

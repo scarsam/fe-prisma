@@ -7,8 +7,7 @@ import {
   FormikValues,
   FormikHelpers,
 } from "formik";
-import styles from "./Form.module.css";
-import { UserValidationTypes, SessionValidationTypes } from "../../types";
+import { UserValidationTypes, SessionValidationTypes } from "../types";
 
 interface FormProps {
   handleSubmit: (
@@ -38,7 +37,9 @@ const Form: React.VFC<FormProps> = ({
       validationSchema={validationSchema}
     >
       {({ errors, touched }) => (
-        <FormikForm className="w-64">{render(errors, touched)}</FormikForm>
+        <FormikForm className="w-full md:w-64">
+          {render(errors, touched)}
+        </FormikForm>
       )}
     </Formik>
   );
