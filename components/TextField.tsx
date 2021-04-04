@@ -26,7 +26,7 @@ const TextField: React.VFC<TextFieldProps> = ({
         </strong>
         <Field
           className={`bg-gray-200 p-2 rounded-sm form-border form-focus outline-none ${
-            isInvalid ? "form-error" : "mb-3"
+            isInvalid ? "form-error bg-red-100" : "mb-3"
           }`}
           id={name}
           type={type}
@@ -40,37 +40,3 @@ const TextField: React.VFC<TextFieldProps> = ({
 };
 
 export default TextField;
-
-// .textField {
-//   margin-bottom: 1rem;
-// }
-
-// .textField label {
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .textField p {
-//   font-size: 0.9rem;
-//   margin: 0.2rem 0 0 0;
-//   color: #d5351f;
-// }
-
-// .textField .textFieldError {
-//   background-color: #fff3ef;
-//   box-shadow: inset 0 -100px 0 -99px #d5351f;
-// }
-
-// .textField input:focus {
-//   background-color: #f3fafb;
-//   box-shadow: inset 0 -100px 0 -97px #2d3748;
-//   outline: none;
-// }
-
-// .textField input {
-//   background-color: #f4f4f3;
-//   border: 0;
-//   box-shadow: inset 0 -100px 0 -99px #919197;
-//   font-size: 1rem;
-//   padding: 0.7rem 0.5rem;
-// }

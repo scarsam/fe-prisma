@@ -45,28 +45,3 @@ const Form: React.VFC<FormProps> = ({
 };
 
 export default Form;
-
-// .form label {
-//   position: relative;
-// }
-
-// .form input {
-//   height: 1rem;
-// }
-
-// .form strong {
-//   height: 1rem;
-//   right: 100%;
-//   padding: 0.7rem 0.5rem;
-//   position: absolute;
-//   text-align: right;
-//   width: max-content;
-// }
-
-// .form button {
-//   margin-top: 1rem;
-// }
-
-// .form {
-//   width: 15rem;
-// }

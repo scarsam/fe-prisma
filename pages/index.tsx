@@ -4,8 +4,7 @@ import Head from "next/head";
 import Form from "../components/Form";
 import TextField from "../components/TextField";
 import Select from "../components/Select";
-import SubmitButton from "../components/Button";
-// import Box from "../../components/utility/Box";
+import Button from "../components/Button";
 import { userValidationSchema } from "../validation/userValidation";
 import { useUserStore } from "../store/user";
 // import { fetchJSON } from "../../utils/api";
@@ -76,7 +75,7 @@ export default function Home() {
               isInvalid={touched.team && errors.team}
               errorMessage={errors.team}
             />
-            <SubmitButton>Save</SubmitButton>
+            <Button>Save</Button>
           </>
         )}
       />

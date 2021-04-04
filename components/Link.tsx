@@ -14,9 +14,3 @@ const Link: React.VFC<LinkProps> = ({ text, path }) => {
 };
 
 export default Link;
-
-// .link {
-//   color: black;
-//   margin-left: 1.5rem;
-//   text-decoration: none;
-// }

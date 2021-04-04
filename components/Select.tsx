@@ -47,27 +47,3 @@ const SelectField: React.VFC<TextFieldProps> = ({
 };
 
 export default SelectField;
-
-// .select {
-//   margin-bottom: 1rem;
-// }
-
-// .select p {
-//   font-size: 0.9rem;
-//   margin: 0.2rem 0 0 0;
-//   color: #d5351f;
-// }
-
-// .select .selectError {
-//   background-color: #fff3ef;
-//   box-shadow: inset 0 -100px 0 -99px #d5351f;
-// }
-
-// .select select {
-//   background-color: #f4f4f3;
-//   border: 0;
-//   box-shadow: inset 0 -100px 0 -99px #919197;
-//   font-size: 1rem;
-//   padding: 0.7rem 0.5rem;
-//   width: 100%;
-// }
