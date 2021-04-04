@@ -1,39 +1,38 @@
 import { FormikValues, FormikHelpers } from "formik";
-
-import Head from "next/head";
-import Form from "../components/Form";
-import TextField from "../components/TextField";
-import Select from "../components/Select";
-import Button from "../components/Button";
 import { userValidationSchema } from "../validation/userValidation";
+import { useState } from "react";
 import { useUserStore } from "../store/user";
-// import { fetchJSON } from "../../utils/api";
+import api from "../utils/api";
+import Button from "../components/Button";
+import Form from "../components/Form";
+import Head from "next/head";
+import Select from "../components/Select";
+import ServerError from "../components/ServerError";
+import TextField from "../components/TextField";
 
 export default function Home() {
+  const [error, setError] = useState<string | null>(null);
   const { user, updateUser } = useUserStore();
 
   const onSubmit = async (
     values: FormikValues,
     { setSubmitting, setErrors }: FormikHelpers<FormikValues>,
   ) => {
-    // try {
-    //   const result = await fetchJSON("login", {
-    //     method: "POST",
-    //     mode: "no-cors",
-    //     body: JSON.stringify(values),
-    //   });
-    //   console.log(result);
-    //   setSubmitting(false);
-    //   updateUser({ ...values });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const result = await api(`/update/${user?.id || 1}`, "PUT", values);
+      console.log(result);
+      updateUser({ ...result });
+      // updateUser({ name: "Monkey", team: "Admins", ...result });
+      setError(null);
+    } catch (err) {
+      setError(err?.message);
+    }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Create Next App</title>
+        <title>Prisma | Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -43,6 +42,7 @@ export default function Home() {
         validationSchema={userValidationSchema}
         render={(errors, touched) => (
           <>
+            {error && <ServerError message={error} />}
             <TextField
               type="name"
               name="name"

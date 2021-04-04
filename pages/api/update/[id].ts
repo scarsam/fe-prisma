@@ -1,26 +1,26 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function loginAPI(
+export default async function updateAPI(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
   try {
     const response = await fetch(
-      `https://prisma-fe-dev-assignent.vercel.app/api/login`,
+      `https://prisma-fe-dev-assignent.vercel.app/api/user/${req?.query?.id}`,
       {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json; charset=utf-8",
         },
         body: JSON.stringify(req.body),
       },
     );
-
     const json = await response.json();
 
     if (!response?.ok) {
+      console.log(json.message);
       return res.status(response?.status).json({
-        message: "Your credentials are not correct. Please try again", // json?.message returns other message than specified - hard coding message instead
+        message: json?.message,
       });
     }
 

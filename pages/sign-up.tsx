@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
-import Head from "next/head";
-
-import { FormikValues, FormikHelpers } from "formik";
-import Form from "../components/Form";
-import TextField from "../components/TextField";
-import Button from "../components/Button";
+import { FormikValues } from "formik";
 import { sessionValidationSchema } from "../validation/sessionValidation";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { useUserStore } from "../store/user";
 import api from "../utils/api";
+import Button from "../components/Button";
+import Form from "../components/Form";
+import Head from "next/head";
+import ServerError from "../components/ServerError";
+import TextField from "../components/TextField";
 
 const initalValues = {
   email: "",
@@ -21,14 +21,13 @@ const Signup: React.VFC = () => {
   const router = useRouter();
 
   const onSubmit = async (values: FormikValues) => {
-    console.log(values);
     try {
-      const result = await api("/signup", values);
+      const result = await api("/sign-up", "POST", values);
       updateUserState(true);
-      updateUser({ name: "Monkey", team: "Admins", ...result });
+      updateUser({ id: "1", name: "Otter", team: "Viewers", ...result });
       setError(null);
       router.push("/");
-    } catch (error) {
+    } catch (err) {
       setError(err?.message);
     }
     updateUserState(true);
@@ -38,7 +37,7 @@ const Signup: React.VFC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Create Next App</title>
+        <title>Prisma | Sign up</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Form
@@ -47,6 +46,7 @@ const Signup: React.VFC = () => {
         validationSchema={sessionValidationSchema}
         render={(errors, touched) => (
           <>
+            {error && <ServerError message={error} />}
             <TextField
               type="email"
               name="email"

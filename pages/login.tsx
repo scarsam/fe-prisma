@@ -1,14 +1,14 @@
-import { useRouter } from "next/router";
-import Head from "next/head";
-import { useState } from "react";
 import { FormikValues } from "formik";
-import Form from "../components/Form";
-import TextField from "../components/TextField";
-import ErrorMessage from "../components/ErrorMessage";
-import Button from "../components/Button";
 import { sessionValidationSchema } from "../validation/sessionValidation";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { useUserStore } from "../store/user";
 import api from "../utils/api";
+import Button from "../components/Button";
+import Form from "../components/Form";
+import Head from "next/head";
+import ServerError from "../components/ServerError";
+import TextField from "../components/TextField";
 
 const initalValues = {
   email: "",
@@ -22,9 +22,9 @@ const Login: React.VFC = () => {
 
   const onSubmit = async (values: FormikValues) => {
     try {
-      const result = await api("/login", values);
+      const result = await api("/login", "POST", values);
       updateUserState(true);
-      updateUser({ name: "Monkey", team: "Admins", ...result });
+      updateUser({ id: "1", name: "Monkey", team: "Admins", ...values });
       setError(null);
       router.push("/");
     } catch (err) {
@@ -35,7 +35,7 @@ const Login: React.VFC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Create Next App</title>
+        <title>Prisma | Login</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -45,11 +45,7 @@ const Login: React.VFC = () => {
         validationSchema={sessionValidationSchema}
         render={(errors, touched) => (
           <>
-            {error && (
-              <div className="bg-red-50 border-red-200 border rounded-sm p-2 pb-1 mb-3">
-                <ErrorMessage message={error} />
-              </div>
-            )}
+            {error && <ServerError message={error} />}
             <TextField
               type="email"
               name="email"

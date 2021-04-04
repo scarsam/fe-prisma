@@ -1,10 +1,11 @@
 async function api(
   path: string,
+  method: string,
   body: { [key: string]: string },
 ): Promise<any> {
   try {
     const response = await fetch(`/api${path}`, {
-      method: "POST",
+      method,
       headers: {
         "Content-Type": "application/json; charset=utf-8",
       },
