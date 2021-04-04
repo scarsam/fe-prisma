@@ -4,15 +4,15 @@ const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
   children,
   ...props
 }) => {
-  const { isSubmitting } = useFormikContext();
-
+  const { isSubmitting, isValid } = useFormikContext();
+  console.log(isValid);
   return (
     <button
       className={
-        "bg-prisma text-white hover:bg-prisma-dark :focus:bg-prisma-dark transition-colors border-none rounded-md cursor-pointer outline-none py-2 px-6"
+        "bg-prisma text-white hover:bg-prisma-dark :focus:bg-prisma-dark transition-colors border-none rounded-md cursor-pointer outline-none py-2 px-6 disabled:opacity-50"
       }
       {...props}
-      disabled={isSubmitting}
+      disabled={isSubmitting || !isValid}
       type="submit"
     >
       {children}

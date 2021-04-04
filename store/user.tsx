@@ -5,13 +5,7 @@ interface UserType {
   name: string;
   email: string;
   password: string;
-  team: Teams | string;
-}
-
-enum Teams {
-  ADMINS = "admins",
-  USERS = "users",
-  VIEWERS = "viewers",
+  team: "Viewers" | "Admins" | "Users" | null;
 }
 
 type UserContextState = {
@@ -25,7 +19,7 @@ const contextDefaultValues: UserContextState = {
     name: "",
     email: "",
     password: "",
-    team: "",
+    team: null,
   },
   updateUser: () => {},
 };

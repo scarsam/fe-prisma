@@ -31,7 +31,7 @@ const SelectField: React.VFC<TextFieldProps> = ({
           name={name}
           placeholder={placeholder}
         >
-          <option value="">- Select -</option>
+          <option value={null}>- Select -</option>
           {options.map((option) => (
             <option key={option} value={option}>
               {option}
