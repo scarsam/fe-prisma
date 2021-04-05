@@ -1,17 +1,9 @@
 import { Field } from "formik";
 import Label from "./Label";
 import ErrorMessage from "./ErrorMessage";
+import { ITextField } from "../types";
 
-interface TextFieldProps {
-  options: string[];
-  label: string;
-  name: string;
-  placeholder: string;
-  isInvalid: string | false | undefined;
-  errorMessage: string | undefined;
-}
-
-const SelectField: React.VFC<TextFieldProps> = ({
+const SelectField: React.VFC<ITextField> = ({
   options,
   label,
   name,

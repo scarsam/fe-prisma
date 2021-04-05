@@ -1,13 +1,13 @@
 import TopBar from "../layout/TopBar";
 import Container from "../layout/Container";
 import Layout from "../layout/Layout";
-import UserProvider from "../store/user";
+import UserProviderWrapper from "../store/user";
 
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <UserProvider>
+    <UserProviderWrapper>
       <Layout>
         <Container background>
           <TopBar />
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </Container>
       </Layout>
-    </UserProvider>
+    </UserProviderWrapper>
   );
 }
 

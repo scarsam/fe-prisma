@@ -1,12 +1,8 @@
 import NavLink from "next/link";
 import { useRouter } from "next/router";
+import { ILink } from "../types";
 
-interface LinkProps {
-  text: string;
-  path: string;
-}
-
-const Link: React.VFC<LinkProps> = ({ text, path }) => {
+const Link: React.VFC<ILink> = ({ text, path }) => {
   const router = useRouter();
 
   return (

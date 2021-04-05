@@ -5,7 +5,7 @@ const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
   ...props
 }) => {
   const { isSubmitting, isValid } = useFormikContext();
-  console.log(isValid);
+
   return (
     <button
       className={

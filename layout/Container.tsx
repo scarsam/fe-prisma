@@ -1,6 +1,4 @@
-interface ILayout {
-  background?: boolean;
-}
+import { ILayout } from "../types";
 
 const Container: React.FC<ILayout> = ({ children, background = false }) => {
   return (

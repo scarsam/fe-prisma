@@ -1,30 +1,7 @@
-import { ReactNode } from "react";
-import {
-  Form as FormikForm,
-  Formik,
-  FormikTouched,
-  FormikErrors,
-  FormikValues,
-  FormikHelpers,
-} from "formik";
-import { UserValidationTypes, SessionValidationTypes } from "../types";
+import { Form as FormikForm, Formik } from "formik";
+import { IForm } from "../types";
 
-interface FormProps {
-  handleSubmit: (
-    values: FormikValues,
-    helpers: FormikHelpers<FormikValues>,
-  ) => void;
-  validationSchema: UserValidationTypes | SessionValidationTypes;
-  initalValues: {
-    [key: string]: string | string[];
-  };
-  render: (
-    errors: FormikErrors<{ [key: string]: string }>,
-    touched: FormikTouched<{ [key: string]: string }>,
-  ) => ReactNode;
-}
-
-const Form: React.VFC<FormProps> = ({
+const Form: React.VFC<IForm> = ({
   handleSubmit,
   initalValues,
   validationSchema,

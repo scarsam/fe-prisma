@@ -1,17 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
-
-interface UserType {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  team: "Viewers" | "Admins" | "Users" | null;
-}
-
-type UserContextState = {
-  user: UserType;
-  updateUser: (user: Partial<UserType>) => void;
-};
+import { UserType, UserContextState } from "../types";
 
 const contextDefaultValues: UserContextState = {
   user: {
@@ -19,7 +7,7 @@ const contextDefaultValues: UserContextState = {
     name: "",
     email: "",
     password: "",
-    team: null,
+    team: "",
   },
   updateUser: () => {},
 };
@@ -27,6 +15,8 @@ const contextDefaultValues: UserContextState = {
 export const UserContext = createContext<UserContextState>(
   contextDefaultValues,
 );
+
+export const { Provider: UserProviderTest } = UserContext;
 
 const UserProvider: React.FC = ({ children }) => {
   const [store, updateStore] = useState(contextDefaultValues);

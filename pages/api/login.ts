@@ -1,5 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+/*
+  This endpoint is needed because of CORS issue on the server
+  - This api endpoint serves as proxy between the client and the server
+  - Some of the error messages don't match up with the Google document but can be tweaked in here
+*/
+
 export default async function loginAPI(
   req: NextApiRequest,
   res: NextApiResponse,
