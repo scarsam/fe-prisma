@@ -26,7 +26,7 @@ export interface IUserContext {
 export interface ITextField {
   options?: string[];
   label: string;
-  type: string;
+  type?: string;
   name: string;
   placeholder: string;
   isInvalid: string | false | undefined;

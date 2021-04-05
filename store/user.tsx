@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
-import { UserType, UserContextState } from "../types";
+import { IUser, IUserContext } from "../types";
 
-const contextDefaultValues: UserContextState = {
+const contextDefaultValues: IUserContext = {
   user: {
     id: "",
     name: "",
@@ -12,16 +12,14 @@ const contextDefaultValues: UserContextState = {
   updateUser: () => {},
 };
 
-export const UserContext = createContext<UserContextState>(
-  contextDefaultValues,
-);
+export const UserContext = createContext<IUserContext>(contextDefaultValues);
 
 export const { Provider: UserProviderTest } = UserContext;
 
 const UserProvider: React.FC = ({ children }) => {
   const [store, updateStore] = useState(contextDefaultValues);
 
-  const updateUser = (updatedUser: Partial<UserType>) =>
+  const updateUser = (updatedUser: Partial<IUser>) =>
     updateStore((prevState) => ({
       ...prevState,
       user: { ...prevState.user, ...updatedUser },
