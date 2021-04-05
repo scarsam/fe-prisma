@@ -73,6 +73,20 @@ describe("Dashboard", () => {
       expect(getByText("Email required")).toBeInTheDocument();
       expect(getByText("Team required")).toBeInTheDocument();
     });
+
+    fireEvent.change(passwordInput, {
+      target: { value: "123" },
+    });
+    fireEvent.change(emailInput, {
+      target: { value: "sam@" },
+    });
+
+    await waitFor(() => {
+      expect(
+        getByText("password must be at least 6 characters"),
+      ).toBeInTheDocument();
+      expect(getByText("email must be a valid email")).toBeInTheDocument();
+    });
   });
 
   it("submits the data", async () => {
