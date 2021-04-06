@@ -43,7 +43,7 @@ const Login: React.VFC = () => {
     <PageLayout>
       <Head>
         <title>Prisma | Login - Sam Ojling</title>
-        <link rel="icon" href="/prisma-favicon.ico" />
+        <link rel="icon" href="/prisma-favicon.png" />
       </Head>
 
       <Form
